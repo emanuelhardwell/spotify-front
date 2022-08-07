@@ -5,7 +5,7 @@ import { Header } from "../header/Header";
 
 export const FavoriteArtists = () => {
   const dispatch = useDispatch();
-  const { favorites } = useSelector((state) => state.favorite);
+  const { favoritesArtists } = useSelector((state) => state.favorite);
 
   useEffect(() => {
     dispatch(startFavoritesGet("artist"));
@@ -26,7 +26,7 @@ export const FavoriteArtists = () => {
         </div>
 
         <div className="row mb-3">
-          {favorites?.map((artist) => (
+          {favoritesArtists?.map((artist) => (
             <div
               key={artist?.info?.id}
               className="col-xs-12 col-sm-6 col-md-4 col-lg-3 mb-3"
@@ -42,10 +42,16 @@ export const FavoriteArtists = () => {
                   <h5 className="card-title d-inline pe-3">
                     {artist?.info?.name}
                   </h5>
+
                   <i
-                    className="fa-solid fa-heart text-danger"
+                    className="fa-solid fa-trash text-danger"
                     onClick={() => handleClick(artist?.info?.id)}
                   ></i>
+                  <div>
+                    <p className="card-title d-inline pe-3">
+                      <strong> Note:</strong> {artist?.note}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

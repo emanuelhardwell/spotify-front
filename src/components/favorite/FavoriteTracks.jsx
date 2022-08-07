@@ -6,7 +6,7 @@ import { Header } from "../header/Header";
 
 export const FavoriteTracks = () => {
   const dispatch = useDispatch();
-  const { favorites } = useSelector((state) => state.favorite);
+  const { favoritesTracks } = useSelector((state) => state.favorite);
 
   useEffect(() => {
     dispatch(startFavoritesGet("track"));
@@ -45,7 +45,7 @@ export const FavoriteTracks = () => {
                 </tr>
               </thead>
               <tbody>
-                {favorites?.map((track) => (
+                {favoritesTracks?.map((track) => (
                   <tr key={track?.info?.id}>
                     <td>
                       <img

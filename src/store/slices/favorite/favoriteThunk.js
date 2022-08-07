@@ -1,23 +1,39 @@
 import Swal from "sweetalert2";
 import { fetchWithOutToken } from "../../../helpers/fetch";
-import { favoritesGet } from "./favoriteSlice";
+import { favoritesGetArtists, favoritesGetTracks } from "./favoriteSlice";
 
 export const startFavoritesGet = (type) => {
   return async (dispatch, state) => {
     let user = state().auth.idSpotify;
 
-    const res = await fetchWithOutToken(
-      `favorite/?idUser=${user}&type=${type}`,
-      {},
-      "GET"
-    );
-    const body = await res.json();
-    if (body.ok) {
-      console.log(body);
+    if (type === "artist") {
+      const res = await fetchWithOutToken(
+        `favorite/?idUser=${user}&type=${type}`,
+        {},
+        "GET"
+      );
+      const body = await res.json();
+      if (body.ok) {
+        console.log(body);
 
-      dispatch(favoritesGet(body.favorites));
+        dispatch(favoritesGetArtists(body.favorites));
+      } else {
+        Swal.fire("Error", body.message, "error");
+      }
     } else {
-      Swal.fire("Error", body.message, "error");
+      const res = await fetchWithOutToken(
+        `favorite/?idUser=${user}&type=${type}`,
+        {},
+        "GET"
+      );
+      const body = await res.json();
+      if (body.ok) {
+        console.log(body);
+
+        dispatch(favoritesGetTracks(body.favorites));
+      } else {
+        Swal.fire("Error", body.message, "error");
+      }
     }
   };
 };

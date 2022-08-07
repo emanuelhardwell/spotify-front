@@ -3,13 +3,17 @@ import { createSlice } from "@reduxjs/toolkit";
 export const favoriteSlice = createSlice({
   name: "favorite",
   initialState: {
-    favorites: [],
+    favoritesArtists: [],
+    favoritesTracks: [],
     favoriteActive: null,
     favoriteModal: false,
   },
   reducers: {
-    favoritesGet: (state, action) => {
-      state.favorites = action.payload;
+    favoritesGetArtists: (state, action) => {
+      state.favoritesArtists = action.payload;
+    },
+    favoritesGetTracks: (state, action) => {
+      state.favoritesTracks = action.payload;
     },
     favoriteActive: (state, action) => {
       state.favoriteActive = action.payload;
@@ -32,5 +36,7 @@ export const {
   favoriteClearActive,
   favoriteModalOpen,
   favoriteModalClose,
+  favoritesGetTracks,
+  favoritesGetArtists,
 } = favoriteSlice.actions;
 export default favoriteSlice.reducer;
