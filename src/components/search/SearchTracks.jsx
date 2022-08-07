@@ -1,7 +1,27 @@
 import React from "react";
 import { msToMinutesAndSeconds } from "../../helpers/convertSeconds";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  favoriteActive,
+  favoriteModalOpen,
+} from "../../store/slices/favorite/favoriteSlice";
 
 export const SearchTracks = ({ tracks }) => {
+  const { idSpotify } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  const handleClick = (id, type, data, idSpotify) => {
+    const favorite = {
+      idUser: idSpotify,
+      idFavorite: id,
+      type: type,
+      info: data,
+    };
+
+    dispatch(favoriteActive(favorite));
+    dispatch(favoriteModalOpen());
+  };
+
   return (
     <>
       <div className="row">
@@ -44,7 +64,12 @@ export const SearchTracks = ({ tracks }) => {
                   <td> {track?.album?.release_date} </td>
                   <td> {msToMinutesAndSeconds(track?.duration_ms)} </td>
                   <td>
-                    <i className="fa-solid fa-heart text-danger"></i>
+                    <i
+                      className="fa-solid fa-heart text-danger icono"
+                      onClick={() =>
+                        handleClick(track?.id, track?.type, track, idSpotify)
+                      }
+                    ></i>
                   </td>
                 </tr>
               ))}

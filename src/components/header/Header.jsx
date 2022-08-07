@@ -55,21 +55,14 @@ export const Header = () => {
                 </NavLink>
                 <ul className="dropdown-menu">
                   <li>
-                    <NavLink className="dropdown-item" to="#">
+                    <NavLink className="dropdown-item" to="/favoriteartists">
                       Artistas
                     </NavLink>
                   </li>
+
                   <li>
-                    <NavLink className="dropdown-item" to="#">
+                    <NavLink className="dropdown-item" to="/favoritetracks">
                       Canciones
-                    </NavLink>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <NavLink className="dropdown-item" to="#">
-                      Something else here
                     </NavLink>
                   </li>
                 </ul>

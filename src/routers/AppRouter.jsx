@@ -7,6 +7,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Confirm } from "../components/auth/Confirm";
 import { Login } from "../components/auth/Login";
+import { FavoriteArtists } from "../components/favorite/FavoriteArtists";
+import { FavoriteTracks } from "../components/favorite/FavoriteTracks";
 import { Home } from "../components/home/Home";
 import { Search } from "../components/search/Search";
 import { startRenewToken } from "../store/slices/auth/authThunk";
@@ -58,6 +60,24 @@ export const AppRouter = () => {
               element={
                 <PrivateRouter isAuthenticated={!!id}>
                   <Search />
+                </PrivateRouter>
+              }
+            />
+
+            <Route
+              path="/favoritetracks"
+              element={
+                <PrivateRouter isAuthenticated={!!id}>
+                  <FavoriteTracks />
+                </PrivateRouter>
+              }
+            />
+
+            <Route
+              path="/favoriteartists"
+              element={
+                <PrivateRouter isAuthenticated={!!id}>
+                  <FavoriteArtists />
                 </PrivateRouter>
               }
             />
