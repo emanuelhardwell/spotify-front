@@ -11,7 +11,6 @@ export const Confirm = () => {
   };
 
   const code = query().get("code");
-  console.log(code);
 
   useEffect(() => {
     if (code) {

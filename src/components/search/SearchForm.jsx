@@ -8,7 +8,6 @@ export const SearchForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("Buscando");
     dispatch(startSearchsGet(search));
   };
 

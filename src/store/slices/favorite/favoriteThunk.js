@@ -14,8 +14,6 @@ export const startFavoritesGet = (type) => {
       );
       const body = await res.json();
       if (body.ok) {
-        console.log(body);
-
         dispatch(favoritesGetArtists(body.favorites));
       } else {
         Swal.fire("Error", body.message, "error");
@@ -28,8 +26,6 @@ export const startFavoritesGet = (type) => {
       );
       const body = await res.json();
       if (body.ok) {
-        console.log(body);
-
         dispatch(favoritesGetTracks(body.favorites));
       } else {
         Swal.fire("Error", body.message, "error");
