@@ -12,7 +12,7 @@ import {
 
 export const startLogin = (token) => {
   return async (dispatch) => {
-    const res = await fetchWithOutToken("login", token, "POST");
+    const res = await fetchWithOutToken("auth/login", token, "POST");
     const body = await res.json();
     if (body.ok) {
       localStorage.setItem("token", body.accessToken);
@@ -30,7 +30,11 @@ export const startRenewToken = () => {
   return async (dispatch) => {
     const refreshToken = localStorage.getItem("refreshToken");
 
-    const res = await fetchWithOutToken("refresh", { refreshToken }, "POST");
+    const res = await fetchWithOutToken(
+      "auth/refresh",
+      { refreshToken },
+      "POST"
+    );
     const body = await res.json();
 
     if (body.ok) {
