@@ -42,5 +42,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "decode-uri-component": "^0.2.1",
+    "nth-check": ">=2.0.1",
+    "minimatch": ">=3.0.5",
+    "loader-utils": ">=3.2.1"
   }
 }
