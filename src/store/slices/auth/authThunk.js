@@ -56,7 +56,7 @@ export const startGetInformation = () => {
       const body = await res.json();
       dispatch(authGetInfo({ name: body.display_name, idSpotify: body.id }));
     } else {
-      console.log("Error al recuperar datos de la cuenta");
+      console.log("Error al recuperar datos de la cuenta de spotify. Intentelo de nuevo!");
     }
   };
 };

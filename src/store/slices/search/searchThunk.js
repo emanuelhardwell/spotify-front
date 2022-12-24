@@ -16,7 +16,7 @@ export const startSearchsGet = (keyword) => {
 
       dispatch(searchsGet({ artists: body.artists, tracks: body.tracks }));
     } else {
-      Swal.fire("Error", "Error en la busqueda", "error");
+      Swal.fire("Error", "Error en la busqueda. Intente lo de nuevo!", "error");
     }
   };
 };

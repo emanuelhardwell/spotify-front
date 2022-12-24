@@ -16,7 +16,7 @@ export const startTracksGet = () => {
       const body = await res.json();
       dispatch(tracksGet(body.tracks.items));
     } else {
-      Swal.fire("Error", "Error al mostar tracks", "error");
+      Swal.fire("Error", "Error al mostar tracks. Intente lo de nuevo!", "error");
     }
   };
 };
